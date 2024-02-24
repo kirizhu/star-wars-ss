@@ -1,20 +1,22 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet, SafeAreaView } from 'react-native';
+import SearchBar from './src/components/SearchBar/SearchBar.component';
+import useStarshipStore, { StarshipState } from './src/store/starshipStore';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 export default function App() {
+  const state = useStarshipStore()
   return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
+    <SafeAreaView testID='app-container' style={styles.container}>
       <StatusBar style="auto" />
-    </View>
+      <SearchBar {...state as StarshipState} />
+    </SafeAreaView>
   );
 }
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
+    backgroundColor: Colors.starkillerWhite,
   },
 });
