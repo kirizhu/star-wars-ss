@@ -1,13 +1,18 @@
 import { View, Text, TextInput } from 'react-native'
 import React from 'react'
 import { FontAwesome } from '@expo/vector-icons';
-import { StarshipState } from '../../store/starshipStore';
 import searchBarStyle from './SearchBar.style';
+
+interface SearchBarProps {
+    searchTerm: string
+    setSearchTerm: (searchTerm: string) => void
+    placeholder: string
+}
 
 const SearchBar = ({
     searchTerm,
     setSearchTerm,
-    placeholder}: StarshipState) => {
+    placeholder}: SearchBarProps) => {
     return (
         <View style={searchBarStyle.container}>
             <FontAwesome 

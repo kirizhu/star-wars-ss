@@ -8,17 +8,19 @@ const searchBarStyle = StyleSheet.create({
         backgroundColor: Colors.starkillerWhite,
         borderRadius: 25,
         alignItems: "center",
-        marginHorizontal: 20,
     },
     icon: {
         padding: 10,
+        marginLeft: 10,
     },
     input: {
+        flex: 1,
         fontSize: 20,
         backgroundColor: Colors.starkillerWhite,
         color: Colors.tieFighterGrey,
         height: 40,
-        marginRight: 20,
+        marginRight: 10,
+  
     },
 });
 
