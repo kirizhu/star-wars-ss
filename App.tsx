@@ -2,7 +2,7 @@ import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView } from 'react-native';
 import SearchBar from './src/components/SearchBar/SearchBar.component';
 import useStarshipStore, { StarshipState } from './src/store/starshipStore';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+import Colors from './src/utils/Colors';
 
 export default function App() {
   const state = useStarshipStore()
@@ -17,6 +17,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: Colors.starkillerWhite,
+    backgroundColor: Colors.saberSilver,
   },
 });
