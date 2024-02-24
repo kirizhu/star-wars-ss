@@ -12,23 +12,21 @@ const StarshipList = () => {
   const {starships, loading, error, fetchStarships, refreshStarships} = useFetchAllStarships()
   const [refreshing, setRefreshing] = useState(false);
   const flatListRef = useRef<FlatList<Starship>>(null);
-  const [showGoToTop, setShowGoToTop] = useState(false); // State to control the visibility of the Go to Top button
+  const [showGoToTop, setShowGoToTop] = useState(false);
 
-  // Function to scroll to the top
   const scrollToTop = () => {
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
   };
 
-  // Optionally, handle onScroll to show/hide the Go to Top button
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = event.nativeEvent.contentOffset.y;
-    setShowGoToTop(y > 200); // Show button if scrolled more than 200 pixels
+    setShowGoToTop(y > 200); 
   };
 
   const handleRefresh = () => {
     setRefreshing(true);
     refreshStarships();
-    setRefreshing(false); // You might need to move this inside refreshStarships or use a callback to ensure it's set after refreshing is done.
+    setRefreshing(false);
   };
 
   if (error) {
@@ -48,7 +46,7 @@ const StarshipList = () => {
         onEndReached={fetchStarships}
         onEndReachedThreshold={0.8}
         ListFooterComponent={
-          starships.length && loading &&  ( // Show only if loading more items and not refreshing
+          loading &&  ( 
             <ActivityIndicator size="large" color={Colors.endorGreen} style={{ marginVertical: 50, justifyContent: 'center' }}/>
           )
         }
@@ -56,7 +54,7 @@ const StarshipList = () => {
           <RefreshControl
             refreshing={refreshing}
             onRefresh={handleRefresh}
-            colors={[Colors.endorGreen]} // Customize the color of the refresh indicator
+            colors={[Colors.endorGreen]} 
           />
         }
       /> 

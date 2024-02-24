@@ -14,8 +14,8 @@ export interface Starship {
   hyperdrive_rating: string;
   MGLT: string;
   starship_class: string;
-  pilots: string[]; // Assuming pilots are represented by their URLs
-  films: string[]; // Assuming films are represented by their URLs
+  pilots: string[]; 
+  films: string[]; 
   created: string;
   edited: string;
   url: string;
@@ -28,13 +28,12 @@ export const useFetchAllStarships = () => {
     const [nextPage, setNextPage] = useState('https://swapi.dev/api/starships/');
   
     const fetchStarships = async (url = 'https://swapi.dev/api/starships/') => {
-      // Prevent fetching if there's no next page
       if (!url || loading) return;
       setLoading(true);
       try {
         const response = await fetch(url);
         const data = await response.json();
-        setNextPage(data.next); // Could be null if there's no next page, which is fine
+        setNextPage(data.next); 
         setStarships(prevStarships => [...prevStarships, ...data.results]);
       } catch (error) {
         console.log(error)
@@ -43,13 +42,10 @@ export const useFetchAllStarships = () => {
         setLoading(false);
       }
     };
-  
-    // Initial fetch
     useEffect(() => {
       fetchStarships();
     }, []);
   
-    // Function to reset and fetch from the beginning
     const refreshStarships = () => {
       setStarships([]);
       setNextPage('https://swapi.dev/api/starships/');
