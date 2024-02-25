@@ -37,6 +37,7 @@ const StarshipDetailModal = () => {
         >
             <View style={starshipDetailModalStyle.centeredView}>
                 <View style={starshipDetailModalStyle.modalView}>
+                <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text> 
                     <ScrollView>
                         {formattedDetails}
                     </ScrollView>

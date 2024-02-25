@@ -4,42 +4,42 @@ import Colors from "../../utils/Colors";
 const starshipDetailModalStyle = StyleSheet.create({
   centeredView: {
     flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
     marginTop: 22,
   },
   modalView: {
     flex: 1,
     marginTop: 40,
-    width:'100%',
     backgroundColor: Colors.imperialWhite,
     borderRadius: 20,
-    padding: 35,
-    alignItems: "center",
-    shadowColor: Colors.darthVaderBlack,
-    shadowOffset: {
-      width: 0,
-      height: 2
-    },
-    shadowOpacity: 0.25,
-    shadowRadius: 4,
-    elevation: 5
+    paddingHorizontal: 20,
+    paddingVertical:30,
   },
   button: {
     borderRadius: 20,
     padding: 10,
-    elevation: 2
+    elevation: 2,
+    color: Colors.imperialWhite,
+    fontSize: 16,
   },
   buttonClose: {
-    backgroundColor: Colors.coruscantSkyline
+    backgroundColor: Colors.ahchToBlue,
+  },
+  headerStyle:{
+    textAlign: "center",
+    fontWeight:'bold',
+    fontSize:20,
+    paddingBottom: 16,
+    textDecorationLine:'underline'
   },
   textStyle: {
-    color: "white",
+    color: Colors.imperialWhite,
     fontWeight: "bold",
     textAlign: "center"
   },
   modalText: {
+    borderWidth:1,
     marginBottom: 15,
+    fontSize: 16,
     textAlign: "center",
     fontWeight:'bold'
   }

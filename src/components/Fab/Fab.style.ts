@@ -11,7 +11,8 @@ const fabStyles = StyleSheet.create({
       borderRadius: 20,
     },
     buttonText: {
-      color: Colors.starkillerWhite,
+      elevation: 2,
+      color: Colors.imperialWhite,
       fontSize: 16,
     },
 });
