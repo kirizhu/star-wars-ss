@@ -1,5 +1,5 @@
-import { ActivityIndicator } from 'react-native'
 import React from 'react'
+import { ActivityIndicator } from 'react-native'
 import Colors from '../../utils/Colors'
 
 const Loading = () => {

@@ -6,7 +6,7 @@ const BASE_URL = 'https://swapi.dev/api/starships/'
 
 export const useFetchAllStarships = () => {
   const [starships, setStarships] = useState<StarshipItem[]>([]);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
   const [nextPage, setNextPage] = useState<number | null>(1); 
 

@@ -1,5 +1,5 @@
-import { RefreshControl } from 'react-native'
 import React, {useState} from 'react'
+import { RefreshControl } from 'react-native'
 import Colors from '../../utils/Colors';
 
 interface RefreshProps {
@@ -7,7 +7,7 @@ interface RefreshProps {
 }
 
 const Refresh = ({refreshFn}:RefreshProps) => {
-    const [refreshing, setRefreshing] = useState(false);
+    const [refreshing, setRefreshing] = useState<boolean>(false);
     const handleRefresh = () => {
         setRefreshing(true);
         refreshFn();

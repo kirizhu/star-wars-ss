@@ -1,5 +1,5 @@
-import { View, Text, TextInput } from 'react-native'
 import React from 'react'
+import { View, TextInput } from 'react-native'
 import { FontAwesome } from '@expo/vector-icons';
 import searchBarStyle from './SearchBar.style';
 import useStarshipStore from '../../store/starshipStore';

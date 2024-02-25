@@ -1,8 +1,8 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
 import { useFetchStarshipById } from '../../api/starships-api';
-import useStarshipStore from '../../store/starshipStore';
 import { StarshipItem } from '../../model/starshipModels';
+import useStarshipStore from '../../store/starshipStore';
 import starshipListItemStyle from './StarshipListItem.style';
 
 interface StarshipListItemProps {

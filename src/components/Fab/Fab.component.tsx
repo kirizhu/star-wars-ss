@@ -1,5 +1,5 @@
-import { View, Text, TouchableOpacity } from 'react-native'
 import React from 'react'
+import { Text, TouchableOpacity } from 'react-native'
 import fabStyles from './Fab.style';
 
 interface FabProps {

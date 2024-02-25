@@ -1,8 +1,8 @@
 import { StatusBar } from 'expo-status-bar';
 import { StyleSheet, SafeAreaView } from 'react-native';
-import Colors from './src/utils/Colors';
 import StarshipList from './src/components/StarshipList/StarshipList.component';
 import StarshipDetailModal from './src/components/StarshipDetailModal/StarshipDetailModal.component';
+import Colors from './src/utils/Colors';
 
 export default function App() {
 
