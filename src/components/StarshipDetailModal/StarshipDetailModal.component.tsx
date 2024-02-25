@@ -9,7 +9,7 @@ const StarshipDetailModal = () => {
         setShowModal(false);
     };
     const formatKeys = (key:string) => {
-        return key.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
+        return key.replace(/_/g, ' ').replace(/^\w/, (firstChar) => firstChar.toUpperCase());
       };
 
     const formattedDetails = useMemo(() => {
