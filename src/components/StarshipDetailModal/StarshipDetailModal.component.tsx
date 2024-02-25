@@ -1,15 +1,33 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Modal, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
 
 const StarshipDetailModal = () => {
     const { showModal, setShowModal, starshipDetail } = useStarshipStore();
-
     const onClose = () => {
         setShowModal(false);
     };
-    
+    const formatKeys = (key:string) => {
+        return key.replace(/_/g, ' ').replace(/^\w/, (c) => c.toUpperCase());
+      };
+
+    const formattedDetails = useMemo(() => {
+        return Object.entries(starshipDetail ?? {}).map(([key, value]) => {
+        const content = Array.isArray(value) ? 
+          value.map((item, index) => (
+            <Text key={index} style={starshipDetailModalStyle.modalText}>{`- ${item}
+            `}</Text>
+          )) 
+          : <Text style={starshipDetailModalStyle.modalText}>{value}</Text>;
+        return (
+          <Text key={key} style={starshipDetailModalStyle.modalText}>
+            {formatKeys(key)}: {content}
+          </Text>
+        );
+    })}, [starshipDetail])
+
+
     return (
         <Modal
             animationType="slide"
@@ -20,24 +38,7 @@ const StarshipDetailModal = () => {
             <View style={starshipDetailModalStyle.centeredView}>
                 <View style={starshipDetailModalStyle.modalView}>
                     <ScrollView>
-                        <Text style={starshipDetailModalStyle.modalText}>Name: {starshipDetail?.name}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Model: {starshipDetail?.model}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Manufacturer: {starshipDetail?.manufacturer}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Cost in Credits: {starshipDetail?.cost_in_credits}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Length: {starshipDetail?.length}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Max Atmosphering Speed: {starshipDetail?.max_atmosphering_speed}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Crew: {starshipDetail?.crew}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Passengers: {starshipDetail?.passengers}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Cargo Capacity: {starshipDetail?.cargo_capacity}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Consumables: {starshipDetail?.consumables}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Hyperdrive Rating: {starshipDetail?.hyperdrive_rating}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>MGLT: {starshipDetail?.MGLT}</Text>
-                        <Text style={starshipDetailModalStyle.modalText}>Starship Class: {starshipDetail?.starship_class}</Text>
-                        {/* Assuming 'films' is an array of URLs */}
-                        <Text style={starshipDetailModalStyle.modalText}>Films:</Text>
-                        {starshipDetail?.films?.map((film, index) => (
-                            <Text key={index} style={starshipDetailModalStyle.modalText}>- {film}</Text>
-                        ))}
+                        {formattedDetails}
                     </ScrollView>
                     <TouchableOpacity
                         style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}

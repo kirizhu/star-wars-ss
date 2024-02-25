@@ -41,6 +41,7 @@ const StarshipList = () => {
         keyExtractor={item => item.url}
         onEndReached={loadMoreStarships}
         onEndReachedThreshold={0.5}
+        ListEmptyComponent={<ErrorComponent />}
         ListFooterComponent={loading && <Loading />}
         refreshControl={<Refresh refreshFn={refreshStarships}/>}
       /> 

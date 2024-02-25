@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { StarshipItem } from '../model/starshipModels';
 import useStarshipStore from '../store/starshipStore';
+
 const BASE_URL = 'https://swapi.dev/api/starships/'
 
 export const useFetchAllStarships = () => {
@@ -14,7 +15,6 @@ export const useFetchAllStarships = () => {
   const fetchStarships = useCallback(async (searchTerm: string, page: number) => {
     setLoading(true);
     let url = `${BASE_URL}?${searchTerm ? `search=${encodeURIComponent(searchTerm)}&` : ''}page=${page}`;
-
     try {
       const response = await fetch(url);
       const data = await response.json();
@@ -44,8 +44,6 @@ export const useFetchAllStarships = () => {
 
   return { starships, loading, error, refreshStarships, loadMoreStarships };
 };
-
-
 
 export const useFetchStarshipById = () => {
   const {starshipDetail, setStarShipDetail} = useStarshipStore()
