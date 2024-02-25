@@ -1,8 +1,9 @@
 import React from 'react';
-import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
+import { Text, TouchableOpacity } from 'react-native';
 import { useFetchStarshipById } from '../../api/starships-api';
 import useStarshipStore from '../../store/starshipStore';
 import { StarshipItem } from '../../model/starshipModels';
+import starshipListItemStyle from './StarshipListItem.style';
 
 interface StarshipListItemProps {
   starship: StarshipItem;
@@ -18,8 +19,8 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
   }
 
   return (
-    <TouchableOpacity style={styles.container} onPress={handleOnPress}>
-      <Text style={styles.title}>{starship.name}</Text>
+    <TouchableOpacity style={starshipListItemStyle.container} onPress={handleOnPress}>
+      <Text style={starshipListItemStyle.title}>{starship.name}</Text>
       <Text>Model: {starship.model}</Text>
       <Text>Manufacturer: {starship.manufacturer}</Text>
       <Text>Cost in credits: {starship.cost_in_credits}</Text>
@@ -31,16 +32,6 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  container: {
-    padding: 16,
-    borderBottomWidth: 1,
-    borderBottomColor: '#ddd',
-  },
-  title: {
-    fontSize: 18,
-    fontWeight: 'bold',
-  },
-});
+
 
 export default StarshipListItem;

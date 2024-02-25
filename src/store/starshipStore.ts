@@ -1,4 +1,3 @@
-import { StarshipDetail } from './../model/starshipModels';
 import {create} from 'zustand'
 import { StarshipItem } from '../model/starshipModels';
 
@@ -9,8 +8,8 @@ export interface StarshipState {
     showModal: boolean;
     setShowModal: (showModal:boolean) => void;
     starshipItem: StarshipItem|null;
-    starshipDetail: StarshipDetail|null;
-    setStarShipDetail: (starshipDetail:StarshipDetail) => void;
+    starshipDetail: StarshipItem|null;
+    setStarShipDetail: (starshipDetail:StarshipItem) => void;
 }
 
 const useStarshipStore = create<StarshipState>((set) => ({
@@ -21,7 +20,7 @@ const useStarshipStore = create<StarshipState>((set) => ({
     setShowModal: (showModal:boolean) => set({showModal}),
     starshipItem: null,
     starshipDetail:null,
-    setStarShipDetail: (starshipDetail:StarshipDetail) => set ({starshipDetail})
+    setStarShipDetail: (starshipDetail:StarshipItem) => set ({starshipDetail})
 }));
 
 export default useStarshipStore;

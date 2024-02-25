@@ -13,12 +13,9 @@ import Refresh from '../Refresh/Refresh.component'
 import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
 
 const StarshipList = () => {
-  const {searchTerm, showModal} = useStarshipStore()
-  const {starships, loading, error, fetchStarships, refreshStarships} = useFetchAllStarships()
-
+  const {starships, loading, error, loadMoreStarships, refreshStarships} = useFetchAllStarships()
   const flatListRef = useRef<FlatList<Starship>>(null);
   const [showGoToTop, setShowGoToTop] = useState(false);
-
   const scrollToTop = () => {
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
   };
@@ -28,12 +25,8 @@ const StarshipList = () => {
     setShowGoToTop(y > 200); 
   };
 
-
-
-  const filteredStarships = starships.filter(starship => starship.name.toLowerCase().includes(searchTerm.toLowerCase()))
-
   if (error) {
-    return <ErrorComponent onPress={fetchStarships}/>
+    return <ErrorComponent onPress={refreshStarships}/>
   }
 
   return (
@@ -43,10 +36,10 @@ const StarshipList = () => {
         ref={flatListRef}
         onScroll={handleScroll}
         style={starshipListStyle.list}
-        data={filteredStarships}
+        data={starships}
         renderItem={({ item }) => <StarshipListItem starship={item} />}
         keyExtractor={item => item.url}
-        onEndReached={fetchStarships}
+        onEndReached={loadMoreStarships}
         onEndReachedThreshold={0.5}
         ListFooterComponent={loading && <Loading />}
         refreshControl={<Refresh refreshFn={refreshStarships}/>}
