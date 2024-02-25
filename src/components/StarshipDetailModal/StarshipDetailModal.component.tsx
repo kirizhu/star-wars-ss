@@ -17,7 +17,7 @@ const StarshipDetailModal = () => {
         const content = Array.isArray(value) ? 
           value.map((item, index) => (
             <Text key={index} style={starshipDetailModalStyle.modalText}>{`- ${item}
-            `}</Text>
+             `}</Text>
           )) 
           : <Text style={starshipDetailModalStyle.modalText}>{value}</Text>;
         return (
