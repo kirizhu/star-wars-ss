@@ -1,28 +1,11 @@
 import { useState, useEffect } from 'react';
+import { StarshipDetail, StarshipItem } from '../model/starshipModels';
+import useStarshipStore from '../store/starshipStore';
 
-export interface Starship {
-  name: string;
-  model: string;
-  manufacturer: string;
-  cost_in_credits: string;
-  length: string;
-  max_atmosphering_speed: string;
-  crew: string;
-  passengers: string;
-  cargo_capacity: string;
-  consumables: string;
-  hyperdrive_rating: string;
-  MGLT: string;
-  starship_class: string;
-  pilots: string[]; 
-  films: string[]; 
-  created: string;
-  edited: string;
-  url: string;
-}
+
 
 export const useFetchAllStarships = () => {
-    const [starships, setStarships] = useState<Starship[]>([])
+    const [starships, setStarships] = useState<StarshipItem[]>([])
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState(null);
     const [nextPage, setNextPage] = useState('https://swapi.dev/api/starships/');
@@ -57,24 +40,24 @@ export const useFetchAllStarships = () => {
   
 
 export const useFetchStarshipById = () => {
-  const [starship, setStarship] = useState(null);
+  const {starshipDetail, setStarShipDetail} = useStarshipStore()
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  const fetchStarship = async (id) => {
+  const fetchStarship = async (url:string) => {
+
     setLoading(true);
     try {
-      const response = await fetch(`https://swapi.dev/api/starships/${id}/`);
+      const response = await fetch(url);
       const data = await response.json();
-      setStarship(data);
+      setStarShipDetail(data);
     } catch (error) {
       setError(error);
     } finally {
       setLoading(false);
     }
   };
-
-  return { starship, loading, error, fetchStarship };
+  return { starshipDetail, loading, error, fetchStarship };
 };
 
 
