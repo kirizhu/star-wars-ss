@@ -17,7 +17,8 @@
     "jest-expo": "~50.0.2",
     "react": "18.2.0",
     "react-native": "0.73.4",
-    "zustand": "^4.5.1"
+    "zustand": "^4.5.1",
+    "expo-updates": "~0.24.11"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
