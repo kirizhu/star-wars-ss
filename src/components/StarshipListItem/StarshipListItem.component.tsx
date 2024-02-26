@@ -18,7 +18,7 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
 
   return (
     <TouchableOpacity 
-      accessibilityLabel="Öppna detaljvy"
+      accessibilityLabel="open detail modal"
       accessibilityRole="button"
       style={starshipListItemStyle.container} onPress={handleOnPress}
     >
