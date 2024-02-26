@@ -20,7 +20,7 @@ export const useFetchAllStarships = () => {
     const [starships, setStarships] = useState<StarshipItem[]>([]);
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);
-    const [page, setPage] = useState<number|null>(1); // Adjusted from nextPage to page for clarity
+    const [page, setPage] = useState<number|null>(1); 
 
     const { searchTerm } = useStarshipStore();
 
@@ -60,7 +60,6 @@ export const useFetchAllStarships = () => {
 
 
 export async function fetchStarshipByUrl(url: string): Promise<any> {
-    console.log("fetchStarshipByUrl")
     try {
         const response = await fetch(url);
         const data = await response.json();
@@ -70,7 +69,7 @@ export async function fetchStarshipByUrl(url: string): Promise<any> {
     }
 }
 
-export const useFetchStarshipById = () => {
+export const useFetchStarshipByUrl = () => {
     const { setStarShipDetail } = useStarshipStore();
     const [loading, setLoading] = useState<boolean>(false);
     const [error, setError] = useState<Error | null>(null);

@@ -22,14 +22,15 @@ const starshipDetailModalStyle = StyleSheet.create({
     fontSize: 16,
   },
   buttonClose: {
-    backgroundColor: Colors.ahchToBlue,
+    backgroundColor: Colors.lightsaberBlue,
   },
   headerStyle:{
     textAlign: "center",
     fontWeight:'bold',
     fontSize:20,
     paddingBottom: 16,
-    textDecorationLine:'underline'
+    textDecorationLine:'underline',
+    color: Colors.lightsaberBlue
   },
   textStyle: {
     color: Colors.imperialWhite,
@@ -37,7 +38,6 @@ const starshipDetailModalStyle = StyleSheet.create({
     textAlign: "center"
   },
   modalText: {
-    borderWidth:1,
     marginBottom: 15,
     fontSize: 16,
     textAlign: "center",

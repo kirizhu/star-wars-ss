@@ -2,14 +2,14 @@ import React, { useEffect, useMemo } from 'react';
 import { Modal, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
-import { useFetchStarshipById } from '../../api/starships-api';
+import { useFetchStarshipByUrl } from '../../api/starships-api';
 import Loading from '../Loading/Loading.component';
 import ErrorComponent from '../Error/Error.component';
 
 
 const StarshipDetailModal = () => {
     const { showModal, setShowModal, starshipDetail, starshipUrl } = useStarshipStore();
-    const {error, loading, fetchStarship} = useFetchStarshipById();
+    const {error, loading, fetchStarship} = useFetchStarshipByUrl();
 
     useEffect(() => {
         if (starshipUrl) {

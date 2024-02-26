@@ -4,7 +4,7 @@ import Colors from '../../utils/Colors'
 
 const Loading = () => {
   return (
-    <ActivityIndicator size="large" color={Colors.endorGreen} style={{ marginVertical: 50, justifyContent: 'center' }}/>
+    <ActivityIndicator size="large" color={Colors.lightsaberBlue} style={{ marginVertical: 50, justifyContent: 'center' }}/>
   )
 }
 
