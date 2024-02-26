@@ -10,6 +10,8 @@ export interface StarshipState {
     starshipItem: StarshipItem|null;
     starshipDetail: StarshipItem|null;
     setStarShipDetail: (starshipDetail:StarshipItem) => void;
+    starshipUrl:string;
+    setStarshipUrl:(starshipUrl:string) => void;
 }
 
 const useStarshipStore = create<StarshipState>((set) => ({
@@ -20,7 +22,9 @@ const useStarshipStore = create<StarshipState>((set) => ({
     setShowModal: (showModal:boolean) => set({showModal}),
     starshipItem: null,
     starshipDetail:null,
-    setStarShipDetail: (starshipDetail:StarshipItem) => set ({starshipDetail})
+    setStarShipDetail: (starshipDetail:StarshipItem) => set ({starshipDetail}),
+    starshipUrl:'',
+    setStarshipUrl: (starshipUrl:string) => set({starshipUrl})
 }));
 
 export default useStarshipStore;

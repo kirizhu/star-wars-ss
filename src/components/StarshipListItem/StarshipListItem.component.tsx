@@ -1,6 +1,5 @@
 import React from 'react';
 import { Text, TouchableOpacity } from 'react-native';
-import { useFetchStarshipById } from '../../api/starships-api';
 import { StarshipItem } from '../../model/starshipModels';
 import useStarshipStore from '../../store/starshipStore';
 import starshipListItemStyle from './StarshipListItem.style';
@@ -10,11 +9,10 @@ interface StarshipListItemProps {
 }
 const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
 
-  const {fetchStarship} = useFetchStarshipById()
-  const {setShowModal} = useStarshipStore(); 
+  const {setShowModal, setStarshipUrl} = useStarshipStore(); 
 
   const handleOnPress = async ()=>{
-    await fetchStarship(starship.url)
+    setStarshipUrl(starship.url)
     setShowModal(true)
   }
 
@@ -27,6 +25,7 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
       <Text>Length: {starship.length} meters</Text>
       <Text>Max speed (atmosphere): {starship.max_atmosphering_speed}</Text>
     </TouchableOpacity>
+
   );
 };
 

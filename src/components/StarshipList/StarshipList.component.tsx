@@ -11,7 +11,7 @@ import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
 import starshipListStyle from './StarshipList.style'
 
 const StarshipList = () => {
-  const {starships, loading, error, loadMoreStarships, refreshStarships} = useFetchAllStarships()
+  const {starships, loading, error, loadMoreStarships, refreshStarships} = useFetchAllStarships();
   const flatListRef = useRef<FlatList<StarshipItem>>(null);
   const [showGoToTop, setShowGoToTop] = useState<boolean>(false);
   const scrollToTop = () => {
@@ -42,12 +42,10 @@ const StarshipList = () => {
         ListEmptyComponent={<ErrorComponent />}
         ListFooterComponent={loading && <Loading />}
         refreshControl={<Refresh refreshFn={refreshStarships}/>}
-      /> 
+      />
       <Fab showGoToTop={showGoToTop} scrollToTop={scrollToTop} />
     </View>
   )
 }
-
-
 
 export default StarshipList

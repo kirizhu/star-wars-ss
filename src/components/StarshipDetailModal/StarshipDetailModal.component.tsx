@@ -1,18 +1,31 @@
-import React, { useMemo } from 'react';
+import React, { useEffect, useMemo } from 'react';
 import { Modal, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
+import { useFetchStarshipById } from '../../api/starships-api';
+import Loading from '../Loading/Loading.component';
+import ErrorComponent from '../Error/Error.component';
+
 
 const StarshipDetailModal = () => {
-    const { showModal, setShowModal, starshipDetail } = useStarshipStore();
+    const { showModal, setShowModal, starshipDetail, starshipUrl } = useStarshipStore();
+    const {error, loading, fetchStarship} = useFetchStarshipById();
+
+    useEffect(() => {
+        if (starshipUrl) {
+            fetchStarship(starshipUrl);
+        }
+    }, [starshipUrl, fetchStarship]);
+
     const onClose = () => {
         setShowModal(false);
     };
+
     const formatKeys = (key:string) => {
         return key.replace(/_/g, ' ').replace(/^\w/, (firstChar) => firstChar.toUpperCase());
       };
 
-    const formattedDetails = useMemo(() => {
+      const formattedDetails = useMemo(() => {
         return Object.entries(starshipDetail ?? {}).map(([key, value]) => {
         const content = Array.isArray(value) ? 
           value.map((item, index) => (
@@ -27,7 +40,6 @@ const StarshipDetailModal = () => {
         );
     })}, [starshipDetail])
 
-
     return (
         <Modal
             animationType="slide"
@@ -37,10 +49,11 @@ const StarshipDetailModal = () => {
         >
             <View style={starshipDetailModalStyle.centeredView}>
                 <View style={starshipDetailModalStyle.modalView}>
-                <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text> 
+                <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text>
+                    {loading ? <Loading/>: error ? <ErrorComponent /> : 
                     <ScrollView>
                         {formattedDetails}
-                    </ScrollView>
+                    </ScrollView>}
                     <TouchableOpacity
                         style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}
                         onPress={onClose}
