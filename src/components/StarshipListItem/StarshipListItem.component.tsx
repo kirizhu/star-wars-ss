@@ -26,8 +26,6 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
       <Text>Cost in credits: {starship.cost_in_credits}</Text>
       <Text>Length: {starship.length} meters</Text>
       <Text>Max speed (atmosphere): {starship.max_atmosphering_speed}</Text>
-      <Text>Crew: {starship.crew}</Text>
-      <Text>Passengers: {starship.passengers}</Text>
     </TouchableOpacity>
   );
 };
