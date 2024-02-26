@@ -14,7 +14,6 @@ describe('StarshipDetailModal', () => {
     const closeModal = jest.fn()
     const { getByText } = render(<StarshipDetailModal closeModal={closeModal} />);
     const closeButton = getByText('Close')
-    console.log(closeButton)
     fireEvent.press(closeButton);
     expect(closeModal).toHaveBeenCalled();
   });

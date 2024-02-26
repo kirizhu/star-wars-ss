@@ -80,7 +80,6 @@ export const useFetchStarshipByUrl = () => {
             const data = await fetchStarshipByUrl(url);
             setStarShipDetail(data);
         } catch (error) {
-            console.error(error);
             setError(error as Error);
         } finally {
             setLoading(false);
