@@ -31,6 +31,9 @@ const StarshipList = () => {
     <View style={starshipListStyle.container}>
       <SearchBar />
       <FlatList
+        accessibilityRole="list"
+        accessibilityLabel="Lista över skepp"
+        accessibilityHint="Scrolla ner för fler resultat"
         ref={flatListRef}
         onScroll={handleScroll}
         style={starshipListStyle.list}

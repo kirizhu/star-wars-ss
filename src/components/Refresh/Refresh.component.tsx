@@ -17,7 +17,7 @@ const Refresh = ({refreshFn}:RefreshProps) => {
     <RefreshControl
         refreshing={refreshing}
         onRefresh={handleRefresh}
-        colors={[Colors.endorGreen]} 
+        colors={[Colors.lightsaberBlue]} 
     />
   )
 }

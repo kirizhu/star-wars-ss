@@ -10,11 +10,13 @@ interface FabProps {
 const Fab = ({showGoToTop, scrollToTop}:FabProps) => {
 
   return showGoToTop && (
-            <TouchableOpacity 
-            onPress={scrollToTop} 
-            style={fabStyles.goToTopButton}
+            <TouchableOpacity
+                accessibilityLabel="Scroll to top"
+                accessibilityRole="button"
+                onPress={scrollToTop} 
+                style={fabStyles.goToTopButton}
             >
-            <Text style={fabStyles.buttonText}>Go to Top</Text>
+                <Text style={fabStyles.buttonText}>Go to Top</Text>
             </TouchableOpacity>
         )
   

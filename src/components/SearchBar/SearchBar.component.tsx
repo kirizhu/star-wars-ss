@@ -14,7 +14,9 @@ const SearchBar = () => {
                 size={24} 
                 color="black" 
             />
-            <TextInput 
+            <TextInput
+                accessibilityLabel="Textfält"
+                accessibilityHint='Sök efter skepp'
                 style={searchBarStyle.input} 
                 value={searchTerm}
                 onChangeText={setSearchTerm}

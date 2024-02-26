@@ -17,7 +17,11 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
   }
 
   return (
-    <TouchableOpacity style={starshipListItemStyle.container} onPress={handleOnPress}>
+    <TouchableOpacity 
+      accessibilityLabel="Öppna detaljvy"
+      accessibilityRole="button"
+      style={starshipListItemStyle.container} onPress={handleOnPress}
+    >
       <Text style={starshipListItemStyle.title}>{starship.name}</Text>
       <Text>Model: {starship.model}</Text>
       <Text>Manufacturer: {starship.manufacturer}</Text>
