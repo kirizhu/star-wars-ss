@@ -9,9 +9,12 @@ import Loading from '../Loading/Loading.component'
 import Refresh from '../Refresh/Refresh.component'
 import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
 import starshipListStyle from './StarshipList.style'
-
-const StarshipList = () => {
-  const {starships, loading, error, loadMoreStarships, refreshStarships} = useFetchAllStarships();
+interface StarshipListProps {
+  loading: boolean;
+  error: Error | null;
+}
+const StarshipList = ({loading, error}:StarshipListProps) => {
+  const { loadMoreStarships, refreshStarships, starships} = useFetchAllStarships();
   const flatListRef = useRef<FlatList<StarshipItem>>(null);
   const [showGoToTop, setShowGoToTop] = useState<boolean>(false);
   const scrollToTop = () => {
@@ -31,6 +34,7 @@ const StarshipList = () => {
     <View style={starshipListStyle.container}>
       <SearchBar />
       <FlatList
+        testID='ship-list'
         accessibilityRole="list"
         accessibilityLabel="List of starships"
         accessibilityHint="scroll down to load more"

@@ -5,21 +5,22 @@ import useStarshipStore from '../../store/starshipStore';
 import { useFetchStarshipByUrl } from '../../api/starships-api';
 import Loading from '../Loading/Loading.component';
 import ErrorComponent from '../Error/Error.component';
+interface StarshipDetailModalProps {
+    showModal: boolean;
+    closeModal: () => void;
+    loading: boolean;
+    error: Error | null;
+}
 
-
-const StarshipDetailModal = () => {
-    const { showModal, setShowModal, starshipDetail, starshipUrl } = useStarshipStore();
-    const {error, loading, fetchStarship} = useFetchStarshipByUrl();
+const StarshipDetailModal = ({showModal,closeModal,loading,error}: StarshipDetailModalProps) => {
+    const { starshipDetail, starshipUrl } = useStarshipStore();
+    const {fetchStarship} = useFetchStarshipByUrl();
 
     useEffect(() => {
         if (starshipUrl) {
             fetchStarship(starshipUrl);
         }
     }, [starshipUrl, fetchStarship]);
-
-    const onClose = () => {
-        setShowModal(false);
-    };
 
     const formatKeys = (key:string) => {
         return key.replace(/_/g, ' ').replace(/^\w/, (firstChar) => firstChar.toUpperCase());
@@ -44,8 +45,9 @@ const StarshipDetailModal = () => {
         <Modal
             animationType="slide"
             transparent={true}
+            testID='modal'
             visible={showModal}
-            onRequestClose={onClose}
+            onRequestClose={closeModal}
         >
             <View style={starshipDetailModalStyle.centeredView}>
                 <View style={starshipDetailModalStyle.modalView}>
@@ -56,7 +58,9 @@ const StarshipDetailModal = () => {
                     </ScrollView>}
                     <TouchableOpacity
                         style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}
-                        onPress={onClose}
+                        onPress={closeModal}
+                        accessibilityRole='button'
+                        accessibilityLabel='Close'
                     >
                         <Text style={starshipDetailModalStyle.textStyle}>Close</Text>
                     </TouchableOpacity>

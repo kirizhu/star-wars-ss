@@ -7,10 +7,12 @@ export interface StarshipState {
     placeholder: string;
     showModal: boolean;
     setShowModal: (showModal:boolean) => void;
+    closeModal: () => void;
     starshipDetail: StarshipItem|null;
     setStarShipDetail: (starshipDetail:StarshipItem) => void;
     starshipUrl:string;
     setStarshipUrl:(starshipUrl:string) => void;
+    
 }
 
 const useStarshipStore = create<StarshipState>((set) => ({
@@ -18,6 +20,7 @@ const useStarshipStore = create<StarshipState>((set) => ({
     setSearchTerm: (searchTerm: string) => set({ searchTerm }),
     placeholder: 'Search for starships',
     showModal: false,
+    closeModal: () => set({showModal:false}),
     setShowModal: (showModal:boolean) => set({showModal}),
     starshipDetail:null,
     setStarShipDetail: (starshipDetail:StarshipItem) => set ({starshipDetail}),
