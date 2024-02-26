@@ -42,7 +42,7 @@ To run the app on your local machine, follow these steps:
    - Android: [exp://u.expo.dev/update/104121ed-0744-4738-91b4-413ec878012a](exp://u.expo.dev/update/104121ed-0744-4738-91b4-413ec878012a)
    - iOS: [exp://u.expo.dev/update/2995c1ae-0744-4970-9048-79e9a18cf8d0](exp://u.expo.dev/update/2995c1ae-0744-4970-9048-79e9a18cf8d0)
 
-5. **Improvements**:
+5. **Possible improvements**:
    - Styling: Enhance the visual appearance of the app for a more polished and professional look.
    - More Testing: Increase test coverage to ensure the reliability and robustness of the app's features.
    - Performance Optimization: Identify and implement optimizations to improve the app's speed and responsiveness.
