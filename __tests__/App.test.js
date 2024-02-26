@@ -10,7 +10,6 @@ describe('<App />', () => {
     const { getByTestId } = render(<App />);
     expect(getByTestId('app-container')).toBeTruthy();
   });
-
 });
 
 describe('SearchBar', () => {
@@ -79,7 +78,6 @@ describe('fetchStarshipByUrl', () => {
     global.fetch.mockResolvedValue(mockResponse);
 
     const result = await fetchStarshipByUrl('https://swapi.dev/api/starships/10/');
-
     expect(global.fetch).toHaveBeenCalledWith('https://swapi.dev/api/starships/10/');
     expect(result).toEqual(testData);
   });
@@ -87,7 +85,6 @@ describe('fetchStarshipByUrl', () => {
   it('handles errors when fetching a starship by URL', async () => {
     const errorMessage = 'Failed to fetch starship';
     global.fetch.mockRejectedValue(new Error(errorMessage));
-
     await expect(fetchStarshipByUrl('https://swapi.dev/api/starships/10/')).rejects.toThrow(errorMessage);
   });
 });

@@ -7,7 +7,6 @@ export interface StarshipState {
     placeholder: string;
     showModal: boolean;
     setShowModal: (showModal:boolean) => void;
-    starshipItem: StarshipItem|null;
     starshipDetail: StarshipItem|null;
     setStarShipDetail: (starshipDetail:StarshipItem) => void;
     starshipUrl:string;
@@ -20,7 +19,6 @@ const useStarshipStore = create<StarshipState>((set) => ({
     placeholder: 'Search for starships',
     showModal: false,
     setShowModal: (showModal:boolean) => set({showModal}),
-    starshipItem: null,
     starshipDetail:null,
     setStarShipDetail: (starshipDetail:StarshipItem) => set ({starshipDetail}),
     starshipUrl:'',
