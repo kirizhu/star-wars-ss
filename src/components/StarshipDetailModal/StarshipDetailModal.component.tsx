@@ -8,13 +8,11 @@ import ErrorComponent from '../Error/Error.component';
 interface StarshipDetailModalProps {
     showModal: boolean;
     closeModal: () => void;
-    loading: boolean;
-    error: Error | null;
 }
 
-const StarshipDetailModal = ({showModal,closeModal,loading,error}: StarshipDetailModalProps) => {
+const StarshipDetailModal = ({showModal,closeModal}: StarshipDetailModalProps) => {
     const { starshipDetail, starshipUrl } = useStarshipStore();
-    const {fetchStarship} = useFetchStarshipByUrl();
+    const {fetchStarship, loading, error} = useFetchStarshipByUrl();
 
     useEffect(() => {
         if (starshipUrl) {

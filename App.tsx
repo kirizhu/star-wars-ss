@@ -4,11 +4,10 @@ import StarshipDetailModal from './src/components/StarshipDetailModal/StarshipDe
 import Colors from './src/utils/Colors';
 import StarshipList from './src/components/StarshipList/StarshipList.component';
 import useStarshipStore from './src/store/starshipStore';
-import { useFetchAllStarships, useFetchStarshipByUrl } from './src/api/starships-api';
+import { useFetchAllStarships } from './src/api/starships-api';
 
 export default function App() {
   const {showModal,closeModal} = useStarshipStore();
-  const {error:modalError, loading:modalLoading} = useFetchStarshipByUrl();
   const {loading, error} = useFetchAllStarships();
   return (
     <SafeAreaView testID='app-container' style={styles.container}>
@@ -20,8 +19,6 @@ export default function App() {
       <StarshipDetailModal 
         showModal={showModal} 
         closeModal={closeModal}
-        error={modalError}
-        loading={modalLoading}
       />
     </SafeAreaView>
   );
