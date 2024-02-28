@@ -2,7 +2,6 @@ import React, { useEffect, useMemo } from 'react';
 import { Modal, View, Text, ScrollView, TouchableOpacity } from 'react-native';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
-import { useFetchStarshipByUrl } from '../../api/starships-api';
 import Loading from '../Loading/Loading.component';
 import ErrorComponent from '../Error/Error.component';
 interface StarshipDetailModalProps {

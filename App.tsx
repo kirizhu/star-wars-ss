@@ -7,7 +7,7 @@ import useStarshipStore from './src/store/starshipStore';
 import { useFetchAllStarships } from './src/api/starships-api';
 
 export default function App() {
-  const { loadMoreStarships, refreshStarships,fetchStarship, starships, loading, error} = useFetchAllStarships();
+  const { loadMoreStarships, refreshStarships, fetchStarship, starships, loading, error} = useFetchAllStarships();
   const {showModal, closeModal} = useStarshipStore();
   return (
     <SafeAreaView testID='app-container' style={styles.container}>

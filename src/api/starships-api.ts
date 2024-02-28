@@ -106,19 +106,6 @@ export const useFetchAllStarships = () => {
     return { starships, loading, error, refreshStarships, loadMoreStarships, fetchStarship};
 };
 
-
-export const useFetchStarshipByUrl = () => {
-    
-    const [loading, setLoading] = useState<boolean>(false); 
-    const [error, setError] = useState<Error | null>(null); 
-    console.log("useFetchStarshipByUrl: hook")
-    // Function to fetch starship details by URL
-
-
-    // Returning the state variables and function for external use
-    return { loading, error, fetchStarship };
-};
-
 /**
 By using useCallback with searchTerm as the dependency, we ensure that handleFetchStarships
 is only recreated when searchTerm changes, preventing unnecessary re-renders of components that 
