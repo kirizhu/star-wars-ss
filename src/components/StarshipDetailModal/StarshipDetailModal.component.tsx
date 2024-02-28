@@ -20,24 +20,32 @@ const StarshipDetailModal = ({showModal,closeModal}: StarshipDetailModalProps) =
         }
     }, [starshipUrl, fetchStarship]);
 
-    const formatKeys = (key:string) => {
-        return key.replace(/_/g, ' ').replace(/^\w/, (firstChar) => firstChar.toUpperCase());
-      };
+// Function to format keys by replacing underscores with spaces and capitalizing the first letter
+const formatKeys = (key:string) => {
+    return key.replace(/_/g, ' ').replace(/^\w/, (firstChar) => firstChar.toUpperCase());
+};
 
-      const formattedDetails = useMemo(() => {
-        return Object.entries(starshipDetail ?? {}).map(([key, value]) => {
+// Memoized function to format starship details for display
+const formattedDetails = useMemo(() => {
+    return Object.entries(starshipDetail ?? {}).map(([key, value]) => {
+        // Check if the value is an array and format accordingly
         const content = Array.isArray(value) ? 
-          value.map((item, index) => (
-            <Text key={index} style={starshipDetailModalStyle.modalText}>{`- ${item}
-             `}</Text>
-          )) 
-          : <Text style={starshipDetailModalStyle.modalText}>{value}</Text>;
+            // If value is an array, map over each item and create a Text component for it
+            value.map((item, index) => (
+                <Text key={index} style={starshipDetailModalStyle.modalText}>{`- ${item}
+                `}</Text>
+            )) 
+            // If value is not an array, create a single Text component for it
+            : <Text style={starshipDetailModalStyle.modalText}>{value}</Text>;
+        // Return a Text component for the key-value pair, with formatted key and content
         return (
-          <Text key={key} style={starshipDetailModalStyle.modalText}>
-            {formatKeys(key)}: {content}
-          </Text>
+            <Text key={key} style={starshipDetailModalStyle.modalText}>
+                {formatKeys(key)}: {content}
+            </Text>
         );
-    })}, [starshipDetail])
+    })
+}, [starshipDetail]); // Depend on starshipDetail to update the formatted details when it changes
+
 
     return (
         <Modal
@@ -69,3 +77,8 @@ const StarshipDetailModal = ({showModal,closeModal}: StarshipDetailModalProps) =
 };
 
 export default StarshipDetailModal;
+
+/**
+useMemo ensures that the formatting process is only executed when the starshipDetail object changes, 
+preventing unnecessary recalculations on each render. 
+ */
