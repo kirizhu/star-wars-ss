@@ -27,6 +27,7 @@ export const useFetchAllStarships = () => {
     const [error, setError] = useState<Error | null>(null); 
     const [page, setPage] = useState<number|null>(1); 
 
+    const { searchTerm } = useStarshipStore(); // Accessing the search term from the starship store
 
     // Function to handle fetching starships data
     const handleFetchStarships = useCallback(async (page: number) => {
