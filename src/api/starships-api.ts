@@ -43,7 +43,6 @@ export const useFetchAllStarships = () => {
     const [error, setError] = useState<Error | null>(null); 
     const [page, setPage] = useState<number|null>(1); 
     const { searchTerm, setStarShipDetail } = useStarshipStore(); // Accessing the search term from the starship store
-    console.log("useFetchAllStarships: hook")
     // Function to handle fetching starships data
     const handleFetchStarships = useCallback(async (page: number) => {
         console.log("useFetchAllStarships: handleFetchStarships")
@@ -86,7 +85,7 @@ export const useFetchAllStarships = () => {
     };
 
     const fetchStarship = useCallback(async (url: string) => {
-        console.log("useFetchStarshipByUrl: fetchStarships")
+        console.log("useFetchAllStarships: fetchStarships")
         setLoading(true); // Setting loading status to true
         try {
             // Fetching starship details using the provided URL
