@@ -1,22 +1,17 @@
-import React, {useState} from 'react'
+import React from 'react'
 import { RefreshControl } from 'react-native'
 import Colors from '../../utils/Colors';
 
 interface RefreshProps {
     refreshFn: () => void;
+    loading: boolean;
 }
 
-const Refresh = ({refreshFn}:RefreshProps) => {
-    const [refreshing, setRefreshing] = useState<boolean>(false);
-    const handleRefresh = () => {
-        setRefreshing(true);
-        refreshFn();
-        setRefreshing(false);
-      };
+const Refresh = ({refreshFn, loading}:RefreshProps) => {
   return (
     <RefreshControl
-        refreshing={refreshing}
-        onRefresh={handleRefresh}
+        refreshing={loading}
+        onRefresh={refreshFn}
         colors={[Colors.lightsaberBlue]} 
     />
   )

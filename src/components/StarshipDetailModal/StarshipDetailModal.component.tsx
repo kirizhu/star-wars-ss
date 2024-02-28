@@ -8,17 +8,19 @@ import ErrorComponent from '../Error/Error.component';
 interface StarshipDetailModalProps {
     showModal: boolean;
     closeModal: () => void;
+    fetchStarship:(starshipUrl:string)=>void;
+    error:Error | null
+    loading: boolean
 }
 
-const StarshipDetailModal = ({showModal,closeModal}: StarshipDetailModalProps) => {
+const StarshipDetailModal = ({showModal,closeModal, fetchStarship, error, loading }: StarshipDetailModalProps) => {
     const { starshipDetail, starshipUrl } = useStarshipStore();
-    const {fetchStarship, loading, error} = useFetchStarshipByUrl();
-
+    
     useEffect(() => {
         if (starshipUrl) {
             fetchStarship(starshipUrl);
         }
-    }, [starshipUrl, fetchStarship]);
+    }, [starshipUrl]);
 
 // Function to format keys by replacing underscores with spaces and capitalizing the first letter
 const formatKeys = (key:string) => {
@@ -58,10 +60,9 @@ const formattedDetails = useMemo(() => {
             <View style={starshipDetailModalStyle.centeredView}>
                 <View style={starshipDetailModalStyle.modalView}>
                 <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text>
-                    {loading ? <Loading/>: error ? <ErrorComponent /> : 
                     <ScrollView>
-                        {formattedDetails}
-                    </ScrollView>}
+                        {loading ? <Loading loading={loading} /> : error ? <ErrorComponent /> : formattedDetails}
+                    </ScrollView>
                     <TouchableOpacity
                         style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}
                         onPress={closeModal}

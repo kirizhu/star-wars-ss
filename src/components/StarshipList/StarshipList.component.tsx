@@ -1,6 +1,5 @@
 import React, {useRef, useState} from 'react'
 import { View, FlatList, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
-import { useFetchAllStarships } from '../../api/starships-api'
 import { StarshipItem } from '../../model/starshipModels'
 import SearchBar from '../SearchBar/SearchBar.component'
 import ErrorComponent from '../Error/Error.component'
@@ -9,12 +8,17 @@ import Loading from '../Loading/Loading.component'
 import Refresh from '../Refresh/Refresh.component'
 import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
 import starshipListStyle from './StarshipList.style'
+import useStarshipStore from '../../store/starshipStore'
+
 interface StarshipListProps {
   loading: boolean;
   error: Error | null;
+  loadMoreStarships:() => void;
+  starships: StarshipItem[];
+  refreshStarships:() => void;
 }
-const StarshipList = ({loading, error}:StarshipListProps) => {
-  const { loadMoreStarships, refreshStarships, starships} = useFetchAllStarships();
+const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStarships}:StarshipListProps) => {
+  const {searchTerm, setSearchTerm} = useStarshipStore();
   const flatListRef = useRef<FlatList<StarshipItem>>(null);
   const [showGoToTop, setShowGoToTop] = useState<boolean>(false);
   const scrollToTop = () => {
@@ -32,7 +36,7 @@ const StarshipList = ({loading, error}:StarshipListProps) => {
 
   return (
     <View style={starshipListStyle.container}>
-      <SearchBar />
+      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder='Search for starships'/>
       <FlatList
         testID='ship-list'
         accessibilityRole="list"
@@ -47,8 +51,8 @@ const StarshipList = ({loading, error}:StarshipListProps) => {
         onEndReached={loadMoreStarships}
         onEndReachedThreshold={0.5}
         ListEmptyComponent={<ErrorComponent />}
-        ListFooterComponent={loading && <Loading />}
-        refreshControl={<Refresh refreshFn={refreshStarships}/>}
+        ListFooterComponent={<Loading loading={loading}/>}
+        refreshControl={<Refresh loading={loading} refreshFn={refreshStarships}/>}
       />
       <Fab showGoToTop={showGoToTop} scrollToTop={scrollToTop} />
     </View>

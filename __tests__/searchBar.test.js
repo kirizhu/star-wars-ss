@@ -5,8 +5,14 @@ import useStarshipStore from '../src/store/starshipStore';
 
 describe('SearchBar', () => {
   it('renders correctly with initial placeHolder', () => {
+    const setSearchTerm = jest.fn()
     // Rendering the SearchBar component
-    const { getByPlaceholderText } = render(<SearchBar />);
+    const { getByPlaceholderText } = render(
+    <SearchBar 
+      searchTerm='' 
+      setSearchTerm={setSearchTerm} 
+      placeholder='Search for starships'
+    />);
     // Expecting that an element with the placeholder text 'Search for starships' exists
     expect(getByPlaceholderText('Search for starships')).toBeTruthy();
   });

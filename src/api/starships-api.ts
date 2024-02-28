@@ -5,6 +5,7 @@ const BASE_URL = 'https://swapi.dev/api/starships/';
 
 export async function fetchStarships(searchTerm: string, page: number): Promise<{starships: StarshipItem[], nextPage: number | null}> {
     // Constructing the URL based on the search term and page number
+    console.log("fetchStarships: request")
     let url = `${BASE_URL}?${searchTerm ? `search=${encodeURIComponent(searchTerm)}&` : ''}page=${page}`;
     try {
         // Fetching data from the constructed URL
@@ -21,16 +22,31 @@ export async function fetchStarships(searchTerm: string, page: number): Promise<
     }
 }
 
+export async function fetchStarshipByUrl(url: string): Promise<any> {
+    console.log("fetchStarshipByUrl: request")
+    try {
+        // Fetching starship details using the provided URL
+        const response = await fetch(url);
+        // Parsing the response JSON data
+        const data = await response.json();
+        // Returning the fetched starship details
+        return data;
+    } catch (error) {
+        // Throwing any encountered errors
+        throw error; 
+    }
+}
+
 export const useFetchAllStarships = () => {
     const [starships, setStarships] = useState<StarshipItem[]>([]); 
     const [loading, setLoading] = useState<boolean>(false); 
     const [error, setError] = useState<Error | null>(null); 
     const [page, setPage] = useState<number|null>(1); 
-
-    const { searchTerm } = useStarshipStore(); // Accessing the search term from the starship store
-
+    const { searchTerm, setStarShipDetail } = useStarshipStore(); // Accessing the search term from the starship store
+    console.log("useFetchAllStarships: hook")
     // Function to handle fetching starships data
     const handleFetchStarships = useCallback(async (page: number) => {
+        console.log("useFetchAllStarships: handleFetchStarships")
         setLoading(true); // Setting loading status to true
         try {
             // Fetching starships data using the provided search term and page number
@@ -69,32 +85,8 @@ export const useFetchAllStarships = () => {
         }
     };
 
-    // Returning the state variables and functions for external use
-    return { starships, loading, error, refreshStarships, loadMoreStarships };
-};
-
-
-export async function fetchStarshipByUrl(url: string): Promise<any> {
-    try {
-        // Fetching starship details using the provided URL
-        const response = await fetch(url);
-        // Parsing the response JSON data
-        const data = await response.json();
-        // Returning the fetched starship details
-        return data;
-    } catch (error) {
-        // Throwing any encountered errors
-        throw error; 
-    }
-}
-
-export const useFetchStarshipByUrl = () => {
-    const { setStarShipDetail } = useStarshipStore(); 
-    const [loading, setLoading] = useState<boolean>(false); 
-    const [error, setError] = useState<Error | null>(null); 
-
-    // Function to fetch starship details by URL
     const fetchStarship = useCallback(async (url: string) => {
+        console.log("useFetchStarshipByUrl: fetchStarships")
         setLoading(true); // Setting loading status to true
         try {
             // Fetching starship details using the provided URL
@@ -109,6 +101,19 @@ export const useFetchStarshipByUrl = () => {
             setLoading(false);
         }
     }, [setStarShipDetail]);
+
+    // Returning the state variables and functions for external use
+    return { starships, loading, error, refreshStarships, loadMoreStarships, fetchStarship};
+};
+
+
+export const useFetchStarshipByUrl = () => {
+    
+    const [loading, setLoading] = useState<boolean>(false); 
+    const [error, setError] = useState<Error | null>(null); 
+    console.log("useFetchStarshipByUrl: hook")
+    // Function to fetch starship details by URL
+
 
     // Returning the state variables and function for external use
     return { loading, error, fetchStarship };

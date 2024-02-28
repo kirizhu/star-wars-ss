@@ -2,9 +2,13 @@ import React from 'react'
 import { ActivityIndicator } from 'react-native'
 import Colors from '../../utils/Colors'
 
-const Loading = () => {
+interface LoadingProps {
+  loading:boolean;
+}
+
+const Loading = ({loading}:LoadingProps) => {
   return (
-    <ActivityIndicator size="large" color={Colors.lightsaberBlue} style={{ marginVertical: 50, justifyContent: 'center' }}/>
+    loading && <ActivityIndicator size="large" color={Colors.lightsaberBlue} style={{ marginVertical: 50, justifyContent: 'center' }}/>
   )
 }
 

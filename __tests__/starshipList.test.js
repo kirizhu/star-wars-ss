@@ -16,8 +16,9 @@ describe('StarshipList', () => {
     expect(emptyList).toBeTruthy();
   });
   it('renders ErrorComponent when error is true', () => {
+    const refreshStarships = jest.fn();
     // Rendering the StarshipList component with error flag set to true and loading flag set to false
-    const { getByText } = render(<StarshipList error={true} loading={false} />);
+    const { getByText } = render(<StarshipList error={true} loading={false} refreshStarships={refreshStarships} />);
     // Retrieving the error message element by its text content
     const errorComponent = getByText('Use the force to try again!');
     // Expecting that the error message element exists
