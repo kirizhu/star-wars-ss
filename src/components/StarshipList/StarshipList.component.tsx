@@ -1,14 +1,14 @@
 import React, {useRef, useState} from 'react'
-import { View, FlatList, NativeSyntheticEvent, NativeScrollEvent } from 'react-native'
+import { View, FlatList, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native'
 import { StarshipItem } from '../../model/starshipModels'
 import SearchBar from '../SearchBar/SearchBar.component'
 import ErrorComponent from '../Error/Error.component'
 import Fab from '../Fab/Fab.component'
 import Loading from '../Loading/Loading.component'
-import Refresh from '../Refresh/Refresh.component'
 import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
 import starshipListStyle from './StarshipList.style'
 import useStarshipStore from '../../store/starshipStore'
+import Colors from '../../utils/Colors'
 
 interface StarshipListProps {
   loading: boolean;
@@ -24,7 +24,6 @@ const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStar
   const scrollToTop = () => {
     flatListRef.current?.scrollToOffset({ animated: true, offset: 0 });
   };
-
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = event.nativeEvent.contentOffset.y;
     setShowGoToTop(y > 200); 
@@ -52,7 +51,9 @@ const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStar
         onEndReachedThreshold={0.5}
         ListEmptyComponent={<ErrorComponent />}
         ListFooterComponent={<Loading loading={loading}/>}
-        refreshControl={<Refresh loading={loading} refreshFn={refreshStarships}/>}
+        refreshControl={
+          <RefreshControl refreshing={loading} onRefresh={refreshStarships} colors={[Colors.lightsaberBlue]} />
+        }
       />
       <Fab showGoToTop={showGoToTop} scrollToTop={scrollToTop} />
     </View>
