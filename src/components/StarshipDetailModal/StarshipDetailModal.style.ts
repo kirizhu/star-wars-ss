@@ -42,7 +42,8 @@ const starshipDetailModalStyle = StyleSheet.create({
     marginBottom: 15,
     fontSize: 16,
     textAlign: "center",
-    fontWeight:'bold'
+    fontWeight:'bold',
+    color:Colors.cpoGold
   }
 });
 

@@ -10,7 +10,11 @@ const starshipListItemStyle = StyleSheet.create({
     title: {
       fontSize: 18,
       fontWeight: 'bold',
+      color: Colors.cpoGold
     },
+    text: {
+      color:Colors.lightGold
+    }
   });
 
   export default starshipListItemStyle

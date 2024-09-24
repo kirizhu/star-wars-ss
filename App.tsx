@@ -1,5 +1,5 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet } from 'react-native';
+import { ImageBackground, StyleSheet } from 'react-native';
 import StarshipDetailModal from './src/components/StarshipDetailModal/StarshipDetailModal.component';
 import Colors from './src/utils/Colors';
 import StarshipList from './src/components/StarshipList/StarshipList.component';
@@ -13,6 +13,10 @@ export default function App() {
   return (
     <SafeAreaProvider>
     <SafeAreaView testID='app-container' style={styles.container}>
+      <ImageBackground
+                    source={require("./assets/stormtrooper-star-wars-czquhdmgnk5wk2sv.jpg")}
+                    style={{flex:1}}
+      >
       <StatusBar style="auto" />
       <StarshipList 
         error={error} 
@@ -28,6 +32,7 @@ export default function App() {
         error={error} 
         loading={loading}
       />
+      </ImageBackground>
     </SafeAreaView>
     </SafeAreaProvider>
   );
@@ -36,7 +41,6 @@ export default function App() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop:16,
     backgroundColor: Colors.deathStarSilver,
   },
 });

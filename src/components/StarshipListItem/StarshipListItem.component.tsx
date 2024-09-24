@@ -23,11 +23,11 @@ const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
       style={starshipListItemStyle.container} onPress={handleOnPress}
     >
       <Text style={starshipListItemStyle.title}>{starship.name}</Text>
-      <Text>Model: {starship.model}</Text>
-      <Text>Manufacturer: {starship.manufacturer}</Text>
-      <Text>Cost in credits: {starship.cost_in_credits}</Text>
-      <Text>Length: {starship.length} meters</Text>
-      <Text>Max speed (atmosphere): {starship.max_atmosphering_speed}</Text>
+      <Text style={starshipListItemStyle.text}>Model: {starship.model}</Text>
+      <Text style={starshipListItemStyle.text}>Manufacturer: {starship.manufacturer}</Text>
+      <Text style={starshipListItemStyle.text}>Cost in credits: {starship.cost_in_credits}</Text>
+      <Text style={starshipListItemStyle.text}>Length: {starship.length} meters</Text>
+      <Text style={starshipListItemStyle.text}>Max speed (atmosphere): {starship.max_atmosphering_speed}</Text>
     </TouchableOpacity>
 
   );

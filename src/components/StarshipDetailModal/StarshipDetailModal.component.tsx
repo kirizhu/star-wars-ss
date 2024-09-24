@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo } from 'react';
-import { Modal, View, Text, ScrollView, TouchableOpacity } from 'react-native';
+import { Modal, View, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
 import Loading from '../Loading/Loading.component';
@@ -57,11 +57,14 @@ const formattedDetails = useMemo(() => {
             onRequestClose={closeModal}
         >
             <View style={starshipDetailModalStyle.centeredView}>
-                <View style={starshipDetailModalStyle.modalView}>
-                <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text>
-                    <ScrollView>
-                        {loading ? <Loading loading={loading} /> : error ? <ErrorComponent /> : formattedDetails}
-                    </ScrollView>
+                <ImageBackground
+                    source={require("../../../assets/star-wars-background-1ezrxjbgyzjmrw9n.jpg")}
+                    style={starshipDetailModalStyle.modalView}
+                >
+                    <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text>
+                        <ScrollView>
+                            {loading ? <Loading loading={loading} /> : error ? <ErrorComponent /> : formattedDetails}
+                        </ScrollView>
                     <TouchableOpacity
                         style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}
                         onPress={closeModal}
@@ -70,7 +73,7 @@ const formattedDetails = useMemo(() => {
                     >
                         <Text style={starshipDetailModalStyle.textStyle}>Close</Text>
                     </TouchableOpacity>
-                </View>
+                </ImageBackground>
             </View>
         </Modal>
     );

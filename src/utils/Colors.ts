@@ -6,6 +6,8 @@ type ColorTypes = {
     sithRed: string,
     starkillerWhite: string,
     imperialWhite: string,
+    cpoGold:string,
+    lightGold:string,
 };
 
 const Colors: ColorTypes = {
@@ -16,6 +18,8 @@ const Colors: ColorTypes = {
     imperialWhite: '#ffffff',
     tieFighterGrey: '#545454',
     deathStarSilver: '#a5a5a5',
+    cpoGold:"#FFD700",
+    lightGold:"#F7EA00"
 };
 
 export default Colors

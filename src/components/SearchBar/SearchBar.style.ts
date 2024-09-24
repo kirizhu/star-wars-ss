@@ -8,6 +8,7 @@ const searchBarStyle = StyleSheet.create({
         backgroundColor: Colors.starkillerWhite,
         borderRadius: 25,
         alignItems: "center",
+        marginVertical:16
     },
     icon: {
         padding: 10,
