@@ -1,9 +1,13 @@
 import React, { useEffect, useMemo } from 'react';
 import { Modal, View, Text, ScrollView, TouchableOpacity, ImageBackground } from 'react-native';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import starshipDetailModalStyle from './StarshipDetailModal.style';
 import useStarshipStore from '../../store/starshipStore';
 import Loading from '../Loading/Loading.component';
 import ErrorComponent from '../Error/Error.component';
+import Colors from '../../utils/Colors';
+
+
 interface StarshipDetailModalProps {
     showModal: boolean;
     closeModal: () => void;
@@ -61,18 +65,21 @@ const formattedDetails = useMemo(() => {
                     source={require("../../../assets/star-wars-background-1ezrxjbgyzjmrw9n.jpg")}
                     style={starshipDetailModalStyle.modalView}
                 >
+                    <TouchableOpacity
+                        style={starshipDetailModalStyle.button}
+                        onPress={closeModal}
+                        accessibilityRole='button'
+                        accessibilityLabel='Close'
+                        >
+                        <AntDesign name="closecircleo" size={24} color={Colors.cpoGold} />
+                    </TouchableOpacity>
+                 <View style={starshipDetailModalStyle.overlay}>
                     <Text style={starshipDetailModalStyle.headerStyle}>Starship Details</Text>
                         <ScrollView>
                             {loading ? <Loading loading={loading} /> : error ? <ErrorComponent /> : formattedDetails}
                         </ScrollView>
-                    <TouchableOpacity
-                        style={[starshipDetailModalStyle.button, starshipDetailModalStyle.buttonClose]}
-                        onPress={closeModal}
-                        accessibilityRole='button'
-                        accessibilityLabel='Close'
-                    >
-                        <Text style={starshipDetailModalStyle.textStyle}>Close</Text>
-                    </TouchableOpacity>
+                        </View>
+                  
                 </ImageBackground>
             </View>
         </Modal>

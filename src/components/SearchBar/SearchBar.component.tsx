@@ -1,6 +1,6 @@
 import React from 'react'
 import { View, TextInput } from 'react-native'
-import { FontAwesome } from '@expo/vector-icons';
+import AntDesign from '@expo/vector-icons/AntDesign';
 import searchBarStyle from './SearchBar.style';
 
 interface SearchBarProps {
@@ -12,9 +12,9 @@ const SearchBar = ({searchTerm, setSearchTerm, placeholder}:SearchBarProps) => {
     
     return (
         <View style={searchBarStyle.container}>
-            <FontAwesome 
-                style={searchBarStyle.icon}
-                name="search" 
+            <AntDesign 
+                name="search1" 
+                style={searchBarStyle.icon} 
                 size={24} 
                 color="black" 
             />

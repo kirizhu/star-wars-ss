@@ -9,29 +9,41 @@ const starshipDetailModalStyle = StyleSheet.create({
   modalView: {
     flex: 1,
     marginTop: 40,
-    backgroundColor: Colors.imperialWhite,
     borderTopLeftRadius:20,
     borderTopRightRadius:20,
     paddingHorizontal: 20,
     paddingVertical:30,
+    overflow:'hidden',
+  },
+  overlay:{
+    position: 'absolute',
+    overflow:'hidden',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    backgroundColor: 'rgba(128, 128, 128, 0.2)',
   },
   button: {
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    color: Colors.imperialWhite,
-    fontSize: 16,
+    position:'absolute',
+    top:5,
+    right:5,
+    zIndex:1
   },
   buttonClose: {
     backgroundColor: Colors.lightsaberBlue,
+    marginVertical:10
   },
   headerStyle:{
     textAlign: "center",
     fontWeight:'bold',
     fontSize:20,
-    paddingBottom: 16,
+    paddingVertical: 16,
     textDecorationLine:'underline',
-    color: Colors.lightsaberBlue
+    color: Colors.cpoGold
   },
   textStyle: {
     color: Colors.imperialWhite,

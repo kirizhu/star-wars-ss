@@ -1,6 +1,9 @@
 import React from 'react'
-import { Text, TouchableOpacity } from 'react-native'
+import { TouchableOpacity } from 'react-native'
+import AntDesign from '@expo/vector-icons/AntDesign';
+
 import fabStyles from './Fab.style';
+import Colors from '../../utils/Colors';
 
 interface FabProps {
     showGoToTop: boolean;
@@ -16,7 +19,7 @@ const Fab = ({showGoToTop, scrollToTop}:FabProps) => {
                 onPress={scrollToTop} 
                 style={fabStyles.goToTopButton}
             >
-                <Text style={fabStyles.buttonText}>Go to Top</Text>
+                <AntDesign name="arrowup" size={24} color={Colors.cpoGold} />
             </TouchableOpacity>
         )
   

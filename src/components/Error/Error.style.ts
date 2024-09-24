@@ -12,7 +12,7 @@ const errorStyle = StyleSheet.create({
         paddingHorizontal: 20,
     },
     title: {
-        color: Colors.tieFighterGrey,
+        color: Colors.cpoGold,
         fontSize: 20,
         lineHeight: 30,
         textAlign: 'center',

@@ -5,9 +5,9 @@ const fabStyles = StyleSheet.create({
     goToTopButton: {
       position: 'absolute',
       right: 20,
-      bottom: 20,
-      backgroundColor: Colors.lightsaberBlue,
-      padding: 10,
+      bottom: 30,
+      backgroundColor: 'rgba(128, 128, 128, 0.3)',
+      padding: 12,
       borderRadius: 20,
     },
     buttonText: {
