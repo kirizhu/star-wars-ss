@@ -7,32 +7,37 @@ import starshipListItemStyle from './StarshipListItem.style';
 interface StarshipListItemProps {
   starship: StarshipItem;
 }
-const StarshipListItem:React.FC<StarshipListItemProps> = ({starship}) => {
+const StarshipListItem: React.FC<StarshipListItemProps> = ({ starship }) => {
+  const { setShowModal, setStarshipUrl } = useStarshipStore();
 
-  const {setShowModal, setStarshipUrl} = useStarshipStore(); 
-
-  const handleOnPress = async ()=>{
-    setStarshipUrl(starship.url)
-    setShowModal(true)
-  }
+  const handleOnPress = async () => {
+    setStarshipUrl(starship.url);
+    setShowModal(true);
+  };
 
   return (
-    <TouchableOpacity 
+    <TouchableOpacity
       accessibilityLabel="open detail modal"
       accessibilityRole="button"
-      style={starshipListItemStyle.container} onPress={handleOnPress}
+      style={starshipListItemStyle.container}
+      onPress={handleOnPress}
     >
       <Text style={starshipListItemStyle.title}>{starship.name}</Text>
       <Text style={starshipListItemStyle.text}>Model: {starship.model}</Text>
-      <Text style={starshipListItemStyle.text}>Manufacturer: {starship.manufacturer}</Text>
-      <Text style={starshipListItemStyle.text}>Cost in credits: {starship.cost_in_credits}</Text>
-      <Text style={starshipListItemStyle.text}>Length: {starship.length} meters</Text>
-      <Text style={starshipListItemStyle.text}>Max speed (atmosphere): {starship.max_atmosphering_speed}</Text>
+      <Text style={starshipListItemStyle.text}>
+        Manufacturer: {starship.manufacturer}
+      </Text>
+      <Text style={starshipListItemStyle.text}>
+        Cost in credits: {starship.cost_in_credits}
+      </Text>
+      <Text style={starshipListItemStyle.text}>
+        Length: {starship.length} meters
+      </Text>
+      <Text style={starshipListItemStyle.text}>
+        Max speed (atmosphere): {starship.max_atmosphering_speed}
+      </Text>
     </TouchableOpacity>
-
   );
 };
-
-
 
 export default StarshipListItem;

@@ -1,24 +1,36 @@
-import React, {useRef, useState} from 'react'
-import { View, FlatList, NativeSyntheticEvent, NativeScrollEvent, RefreshControl } from 'react-native'
-import { StarshipItem } from '../../model/starshipModels'
-import SearchBar from '../SearchBar/SearchBar.component'
-import ErrorComponent from '../Error/Error.component'
-import Fab from '../Fab/Fab.component'
-import Loading from '../Loading/Loading.component'
-import StarshipListItem from '../StarshipListItem/StarshipListItem.component'
-import starshipListStyle from './StarshipList.style'
-import useStarshipStore from '../../store/starshipStore'
-import Colors from '../../utils/Colors'
+import React, { useRef, useState } from 'react';
+import {
+  View,
+  FlatList,
+  NativeSyntheticEvent,
+  NativeScrollEvent,
+  RefreshControl,
+} from 'react-native';
+import { StarshipItem } from '../../model/starshipModels';
+import SearchBar from '../SearchBar/SearchBar.component';
+import ErrorComponent from '../Error/Error.component';
+import Fab from '../Fab/Fab.component';
+import Loading from '../Loading/Loading.component';
+import StarshipListItem from '../StarshipListItem/StarshipListItem.component';
+import starshipListStyle from './StarshipList.style';
+import useStarshipStore from '../../store/starshipStore';
+import Colors from '../../utils/Colors';
 
 interface StarshipListProps {
   loading: boolean;
   error: Error | null;
-  loadMoreStarships:() => void;
+  loadMoreStarships: () => void;
   starships: StarshipItem[];
-  refreshStarships:() => void;
+  refreshStarships: () => void;
 }
-const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStarships}:StarshipListProps) => {
-  const {searchTerm, setSearchTerm} = useStarshipStore();
+const StarshipList = ({
+  loadMoreStarships,
+  loading,
+  error,
+  starships,
+  refreshStarships,
+}: StarshipListProps) => {
+  const { searchTerm, setSearchTerm } = useStarshipStore();
   const flatListRef = useRef<FlatList<StarshipItem>>(null);
   const [showGoToTop, setShowGoToTop] = useState<boolean>(false);
   const scrollToTop = () => {
@@ -26,18 +38,22 @@ const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStar
   };
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const y = event.nativeEvent.contentOffset.y;
-    setShowGoToTop(y > 200); 
+    setShowGoToTop(y > 200);
   };
 
   if (error) {
-    return <ErrorComponent onPress={refreshStarships}/>
+    return <ErrorComponent onPress={refreshStarships} />;
   }
 
   return (
     <View style={starshipListStyle.container}>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} placeholder='Search for starships'/>
+      <SearchBar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        placeholder="Search for starships"
+      />
       <FlatList
-        testID='ship-list'
+        testID="ship-list"
         accessibilityRole="list"
         accessibilityLabel="List of starships"
         accessibilityHint="scroll down to load more"
@@ -46,18 +62,22 @@ const StarshipList = ({loadMoreStarships, loading, error, starships, refreshStar
         style={starshipListStyle.list}
         data={starships}
         renderItem={({ item }) => <StarshipListItem starship={item} />}
-        keyExtractor={item => item.url}
+        keyExtractor={(item) => item.url}
         onEndReached={loadMoreStarships}
         onEndReachedThreshold={0.5}
         ListEmptyComponent={<ErrorComponent />}
-        ListFooterComponent={<Loading loading={loading}/>}
+        ListFooterComponent={<Loading loading={loading} />}
         refreshControl={
-          <RefreshControl refreshing={loading} onRefresh={refreshStarships} colors={[Colors.lightsaberBlue]} />
+          <RefreshControl
+            refreshing={loading}
+            onRefresh={refreshStarships}
+            colors={[Colors.lightsaberBlue]}
+          />
         }
       />
       <Fab showGoToTop={showGoToTop} scrollToTop={scrollToTop} />
     </View>
-  )
-}
+  );
+};
 
-export default StarshipList
+export default StarshipList;

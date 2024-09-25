@@ -1,6 +1,5 @@
-
 import React from 'react';
-import {View, Text, TouchableOpacity} from 'react-native';
+import { View, Text, TouchableOpacity } from 'react-native';
 import errorStyle from './Error.style';
 
 interface ErrorComponentProps {
@@ -17,19 +16,19 @@ const ErrorComponent: React.FC<ErrorComponentProps> = ({
 }) => {
   return (
     <View style={errorStyle.container}>
-    <Text style={errorStyle.title}>{title}</Text>
+      <Text style={errorStyle.title}>{title}</Text>
       {onPress && (
         <TouchableOpacity
           accessibilityLabel={buttonText}
           accessibilityRole="button"
           style={errorStyle.retryButton}
-          onPress={onPress}>
+          onPress={onPress}
+        >
           <Text style={errorStyle.buttonText}>{buttonText}</Text>
         </TouchableOpacity>
       )}
     </View>
   );
 };
-
 
 export default ErrorComponent;

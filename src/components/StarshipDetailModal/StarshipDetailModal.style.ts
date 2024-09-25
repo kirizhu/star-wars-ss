@@ -1,5 +1,5 @@
-import { StyleSheet } from "react-native";
-import Colors from "../../utils/Colors";
+import { StyleSheet } from 'react-native';
+import Colors from '../../utils/Colors';
 
 const starshipDetailModalStyle = StyleSheet.create({
   centeredView: {
@@ -9,15 +9,15 @@ const starshipDetailModalStyle = StyleSheet.create({
   modalView: {
     flex: 1,
     marginTop: 40,
-    borderTopLeftRadius:20,
-    borderTopRightRadius:20,
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
     paddingHorizontal: 20,
-    paddingVertical:30,
-    overflow:'hidden',
+    paddingVertical: 30,
+    overflow: 'hidden',
   },
-  overlay:{
+  overlay: {
     position: 'absolute',
-    overflow:'hidden',
+    overflow: 'hidden',
     top: 0,
     left: 0,
     right: 0,
@@ -28,35 +28,35 @@ const starshipDetailModalStyle = StyleSheet.create({
     borderRadius: 20,
     padding: 10,
     elevation: 2,
-    position:'absolute',
-    top:5,
-    right:5,
-    zIndex:1
+    position: 'absolute',
+    top: 5,
+    right: 5,
+    zIndex: 1,
   },
   buttonClose: {
     backgroundColor: Colors.lightsaberBlue,
-    marginVertical:10
+    marginVertical: 10,
   },
-  headerStyle:{
-    textAlign: "center",
-    fontWeight:'bold',
-    fontSize:20,
+  headerStyle: {
+    textAlign: 'center',
+    fontWeight: 'bold',
+    fontSize: 20,
     paddingVertical: 16,
-    textDecorationLine:'underline',
-    color: Colors.cpoGold
+    textDecorationLine: 'underline',
+    color: Colors.cpoGold,
   },
   textStyle: {
     color: Colors.imperialWhite,
-    fontWeight: "bold",
-    textAlign: "center"
+    fontWeight: 'bold',
+    textAlign: 'center',
   },
   modalText: {
     marginBottom: 15,
     fontSize: 16,
-    textAlign: "center",
-    fontWeight:'bold',
-    color:Colors.cpoGold
-  }
+    textAlign: 'center',
+    fontWeight: 'bold',
+    color: Colors.cpoGold,
+  },
 });
 
-export default starshipDetailModalStyle
+export default starshipDetailModalStyle;

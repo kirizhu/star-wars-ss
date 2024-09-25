@@ -1,20 +1,20 @@
-import { StyleSheet } from "react-native";
-import Colors from "../../utils/Colors";
+import { StyleSheet } from 'react-native';
+import Colors from '../../utils/Colors';
 
 const starshipListItemStyle = StyleSheet.create({
-    container: {
-      padding: 16,
-      borderBottomWidth: 1,
-      borderBottomColor: Colors.deathStarSilver
-    },
-    title: {
-      fontSize: 18,
-      fontWeight: 'bold',
-      color: Colors.cpoGold
-    },
-    text: {
-      color:Colors.lightGold
-    }
-  });
+  container: {
+    padding: 16,
+    borderBottomWidth: 1,
+    borderBottomColor: Colors.deathStarSilver,
+  },
+  title: {
+    fontSize: 18,
+    fontWeight: 'bold',
+    color: Colors.cpoGold,
+  },
+  text: {
+    color: Colors.lightGold,
+  },
+});
 
-  export default starshipListItemStyle
+export default starshipListItemStyle;
