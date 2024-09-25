@@ -11,8 +11,8 @@ export default function App() {
   const { loadMoreStarships, refreshStarships, fetchStarship, starships, loading, error} = useFetchAllStarships();
   const {showModal, closeModal} = useStarshipStore();
   return (
-    <SafeAreaProvider>
-    <SafeAreaView testID='app-container' style={styles.container}>
+    <SafeAreaProvider testID='app-container'>
+    <SafeAreaView style={styles.container}>
       <ImageBackground
                     source={require("./assets/stormtrooper-star-wars-czquhdmgnk5wk2sv.jpg")}
                     style={{flex:1}}

@@ -66,6 +66,7 @@ const formattedDetails = useMemo(() => {
                         onPress={closeModal}
                         accessibilityRole='button'
                         accessibilityLabel='Close'
+                        testID='close-modal-button'
                         >
                         <AntDesign name="closecircleo" size={24} color={Colors.cpoGold} />
                     </TouchableOpacity>

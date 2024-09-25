@@ -1,0 +1,219 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders StarshipList correctly 1`] = `
+<View
+  style={
+    {
+      "flex": 1,
+      "marginHorizontal": 20,
+    }
+  }
+>
+  <View
+    style={
+      {
+        "alignItems": "center",
+        "backgroundColor": "#f0f0f0",
+        "borderRadius": 25,
+        "flexDirection": "row",
+        "height": 50,
+        "marginVertical": 16,
+      }
+    }
+  >
+    <Text />
+    <TextInput
+      accessibilityHint="Look for starships"
+      accessibilityLabel="Textinput"
+      onChangeText={[Function]}
+      placeholder="Search for starships"
+      style={
+        {
+          "backgroundColor": "#f0f0f0",
+          "color": "#545454",
+          "flex": 1,
+          "fontSize": 20,
+          "height": 40,
+          "marginRight": 10,
+        }
+      }
+      value=""
+    />
+  </View>
+  <RCTScrollView
+    ListEmptyComponent={<ErrorComponent />}
+    ListFooterComponent={
+      <Loading
+        loading={false}
+      />
+    }
+    accessibilityHint="scroll down to load more"
+    accessibilityLabel="List of starships"
+    accessibilityRole="list"
+    data={
+      [
+        {
+          "cargo_capacity": "110",
+          "cost_in_credits": "149999",
+          "crew": "1",
+          "length": "12.5",
+          "manufacturer": "Incom Corporation",
+          "model": "T-65 X-wing",
+          "name": "X-wing",
+          "passengers": "0",
+          "starship_class": "Starfighter",
+          "url": "https://swapi.dev/api/starships/12/",
+        },
+      ]
+    }
+    getItem={[Function]}
+    getItemCount={[Function]}
+    keyExtractor={[Function]}
+    onContentSizeChange={[Function]}
+    onEndReached={[Function]}
+    onEndReachedThreshold={0.5}
+    onLayout={[Function]}
+    onMomentumScrollBegin={[Function]}
+    onMomentumScrollEnd={[Function]}
+    onScroll={[Function]}
+    onScrollBeginDrag={[Function]}
+    onScrollEndDrag={[Function]}
+    refreshControl={
+      <RefreshControlMock
+        colors={
+          [
+            "#0291d9",
+          ]
+        }
+        onRefresh={[Function]}
+        refreshing={false}
+      />
+    }
+    removeClippedSubviews={false}
+    renderItem={[Function]}
+    scrollEventThrottle={0.0001}
+    stickyHeaderIndices={[]}
+    style={
+      {
+        "padding": 10,
+      }
+    }
+    testID="ship-list"
+    viewabilityConfigCallbackPairs={[]}
+  >
+    <RCTRefreshControl />
+    <View>
+      <View
+        onFocusCapture={[Function]}
+        onLayout={[Function]}
+        style={null}
+      >
+        <View
+          accessibilityLabel="open detail modal"
+          accessibilityRole="button"
+          accessibilityState={
+            {
+              "busy": undefined,
+              "checked": undefined,
+              "disabled": undefined,
+              "expanded": undefined,
+              "selected": undefined,
+            }
+          }
+          accessibilityValue={
+            {
+              "max": undefined,
+              "min": undefined,
+              "now": undefined,
+              "text": undefined,
+            }
+          }
+          accessible={true}
+          collapsable={false}
+          focusable={true}
+          onClick={[Function]}
+          onResponderGrant={[Function]}
+          onResponderMove={[Function]}
+          onResponderRelease={[Function]}
+          onResponderTerminate={[Function]}
+          onResponderTerminationRequest={[Function]}
+          onStartShouldSetResponder={[Function]}
+          style={
+            {
+              "borderBottomColor": "#a5a5a5",
+              "borderBottomWidth": 1,
+              "opacity": 1,
+              "padding": 16,
+            }
+          }
+        >
+          <Text
+            style={
+              {
+                "color": "#FFD700",
+                "fontSize": 18,
+                "fontWeight": "bold",
+              }
+            }
+          >
+            X-wing
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#F7EA00",
+              }
+            }
+          >
+            Model: 
+            T-65 X-wing
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#F7EA00",
+              }
+            }
+          >
+            Manufacturer: 
+            Incom Corporation
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#F7EA00",
+              }
+            }
+          >
+            Cost in credits: 
+            149999
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#F7EA00",
+              }
+            }
+          >
+            Length: 
+            12.5
+             meters
+          </Text>
+          <Text
+            style={
+              {
+                "color": "#F7EA00",
+              }
+            }
+          >
+            Max speed (atmosphere): 
+          </Text>
+        </View>
+      </View>
+      <View
+        onLayout={[Function]}
+      />
+    </View>
+  </RCTScrollView>
+</View>
+`;
