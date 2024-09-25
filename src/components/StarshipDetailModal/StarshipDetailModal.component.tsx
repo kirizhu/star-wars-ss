@@ -33,23 +33,19 @@ const formatKeys = (key:string) => {
 // Memoized function to format starship details for display
 const formattedDetails = useMemo(() => {
     return Object.entries(starshipDetail ?? {}).map(([key, value]) => {
-        // Check if the value is an array and format accordingly
         const content = Array.isArray(value) ? 
-            // If value is an array, map over each item and create a Text component for it
             value.map((item, index) => (
                 <Text key={index} style={starshipDetailModalStyle.modalText}>{`- ${item}
                 `}</Text>
             )) 
-            // If value is not an array, create a single Text component for it
             : <Text style={starshipDetailModalStyle.modalText}>{value}</Text>;
-        // Return a Text component for the key-value pair, with formatted key and content
         return (
             <Text key={key} style={starshipDetailModalStyle.modalText}>
                 {formatKeys(key)}: {content}
             </Text>
         );
     })
-}, [starshipDetail]); // Depend on starshipDetail to update the formatted details when it changes
+}, [starshipDetail]); 
 
 
     return (
